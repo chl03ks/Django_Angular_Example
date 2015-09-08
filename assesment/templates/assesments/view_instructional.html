@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block content %}
+  {% verbatim %}
+  <div ng-controller="ShowInstrucController">
+    <div class="col-lg-12 instcontent">
+      <div class="jumbotron">
+        <h1>{{instructional.title}}</h1>
+        {{instructional.body}}
+      </div>
+      <div class="panel panel-default">
+        <div class="panel-heading">Source</div>
+        <div class="panel-body">
+          <a href="{{instructional.source}}">{{instructional.source}}</a>
+        </div>
+      </div>
+      <div class="questions" ng-repeat="question in listofquestions track by $index">
+        <div class="panel panel-primary">
+          <div class="panel-heading ">
+            Question {{$index + 1}}
+          </div>
+          <div class="panel-body">
+            <h4>{{question.question_content}}</h4>
+            <form>
+              <input type="radio" name="answer" ng-model="content" value="True">True</input>
+              <input type="radio" name="answer" ng-model="content"  value="False">False</input>
+            </form>
+            <div class="True" ng-show="(question.answer == true && content == 'True') || (question.answer == false && content == 'False')">
+            <h4><span class="label label-success">Correct!</span></h4>
+            </div>
+            <div class="False" ng-show="(question.answer == true && content == 'False') || (question.answer == false && content == 'True')">
+             <h4><span class="label label-danger">Incorrect!</span></h4>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endverbatim %}
+{% endblock content %}

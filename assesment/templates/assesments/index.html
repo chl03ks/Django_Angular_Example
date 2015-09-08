@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block content %}
+    {% verbatim %}
+        <div class="content" ng-controller="ApiListController">
+            <div class="panel panel-default" ng-repeat="instructional in instructionals">
+                  <div class="panel-heading">
+                    <h3 class="panel-title" ng-bind="instructional.title"></h3>
+                  </div>
+                   <div class="panel-body">
+                  <div class="hero-unit">
+                    <span ng-bind="instructional.body | limitTo: 400"></span>.....
+                   </div>
+                   <a class="btn btn-primary pull-right" href="/{{instructional.id}}/" role="button">Read more..</a>
+                  </div>
+
+            </div>
+        </div>
+    {% endverbatim %}
+{% endblock content %}
